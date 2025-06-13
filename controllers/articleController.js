@@ -34,7 +34,7 @@ export async function getAllArticle(req, res) {
     // si sort === "asc" on récupère les article filtré par category trier par date de création la plus vieille
     // Sinon on trie par date de création la plus récente
     const sortEffective = sort === "asc" ? 1 : -1;
-    const articles = await Article.find({ category }).sort({ createAt: sortEffective });
+    const articles = await Article.find( category && { category }).sort({ createAt: sortEffective });
 
     // On vérifie s'il y a du contenu
     if (articles.length === 0)
